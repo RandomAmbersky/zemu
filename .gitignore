@@ -10,3 +10,5 @@ callgrind.out.*
 
 /build
 /build-analyze
+
+/extras/*.sna

@@ -90,7 +90,7 @@ extern bool unturboNx;
 
 extern bool breakpoints[0x10000];
 
-#define MAX_WATCHES 0x10
+#define MAX_WATCHES 24
 extern uint16_t watches[MAX_WATCHES];
 extern unsigned watchesCount;
 

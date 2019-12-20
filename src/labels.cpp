@@ -55,19 +55,26 @@ void Labels_Load(const char* fname) {
 
             std::string label = line.substr(8);
 
-            if (label.length() >= 6) {
-                for (int i = 0, len = label.length() - 6; i <= len; i++) {
-                    if (label[i] == '_'
-                        && label[i + 1] == '_'
-                        && label[i + 2] == 'b'
-                        && label[i + 3] == 'p'
-                        && label[i + 4] == '_'
-                        && label[i + 5] == '_'
-                    ) {
-                        printf("Set breakpoint on 0x%04X bank %02X\n", addr, bank);
-                        breakpoints[addr] = true;
-                        break;
+            if (label.find("__bp__") != std::string::npos) {
+                printf("Set breakpoint on 0x%04X bank %02X\n", addr, bank);
+                breakpoints[addr] = true;
+            } else if (label.find("__w__") != std::string::npos) {
+                if (watchesCount < MAX_WATCHES) {
+                    bool isFound = false;
+
+                    for (unsigned i = 0; i < watchesCount; i++) {
+                        if (watches[i] == addr) {
+                            isFound = true;
+                            break;
+                        }
                     }
+
+                    if (!isFound) {
+                        printf("Add watch on 0x%04X bank %02X\n", addr, bank);
+                        watches[watchesCount++] = addr;
+                    }
+                } else {
+                    printf("Can't add more than %d watches\n", MAX_WATCHES);
                 }
             }
 

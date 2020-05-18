@@ -214,7 +214,7 @@ int C_Fdd::load_dimage(const char* filename) {
     // TODO
     // if (GetFileAttributes(filename) & FILE_ATTRIBUTE_READONLY) { set_wprotected(1); }
 
-    snaptype = ((type == snHOB || type == snSCL) ? snTRD : type);
+    snaptype = ((type == snHOB || type == snSCL) ? static_cast<uint8_t>(snTRD) : type);
     return 1;
 }
 

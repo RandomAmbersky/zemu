@@ -591,7 +591,7 @@ void DebugIt(void) {
 
     uint16_t curAddr = z80ex_get_reg(cpu, regPC);
     uint16_t userAddr = curAddr;
-    bool correctAddr = true;
+    // bool correctAddr = true;
     int userPos;
 
     bool hexMode = false;
@@ -816,7 +816,7 @@ void DebugIt(void) {
             DebugStep();
             curAddr = z80ex_get_reg(cpu, regPC);
             userAddr = curAddr;
-            correctAddr = true;
+            // correctAddr = true;
         } else if (key == STAGE_KEYCODE_F8) {
             addr = z80ex_get_reg(cpu, regPC);
             unsigned int maxCnt = 71680 / 4;
@@ -828,7 +828,7 @@ void DebugIt(void) {
 
             curAddr = z80ex_get_reg(cpu, regPC);
             userAddr = curAddr;
-            correctAddr = true;
+            // correctAddr = true;
         } else if (key == STAGE_KEYCODE_F9) {
             restoreBpAddr = userAddr;
             restoreBpVal = breakpoints[userAddr];

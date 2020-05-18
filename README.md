@@ -23,6 +23,12 @@ cd <into emulator directory>
 
 Binary will be in the `build` folder.
 
+## Debian-based
+
+```
+sudo apt install build-essential cmake ruby libboost-dev libboost-filesystem-dev libsdl2-dev
+```
+
 # Compilation under Windows
 
 Sorry, that was too long ago. All I remember is that you should use MinGW.

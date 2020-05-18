@@ -5,15 +5,7 @@
     int pos;
     int zxLine;
     int cl;
-
-    #if defined(__clang__)
-        #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Wunused-variable"
-    #endif
-    int zxScreen;
-    #if defined(__clang__)
-        #pragma clang diagnostic pop
-    #endif
+    [[maybe_unused]] int zxScreen;
 
     if (nextClk < SCREEN_START || prevRenderClk >= SCREEN_END) {
         return;

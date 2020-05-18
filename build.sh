@@ -19,5 +19,10 @@ for ARG in "$@" ; do
     esac
 done
 
-cmake $CMAKE_PARAMS -B build . && cmake --build build
+mkdir -p build \
+&& pushd build \
+&& cmake $CMAKE_PARAMS .. \
+&& cmake --build . \
+&& popd
+
 exit "$?"

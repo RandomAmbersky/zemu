@@ -22,7 +22,7 @@ C_SoundMixer::~C_SoundMixer() {
 
         wavDataWriter = wavPath->dataWriter();
         wavDataWriter->writeDword(0x46464952);
-        wavDataWriter->writeDword(wavSz + 0x40 - 8);
+        wavDataWriter->writeDword(wavSz + 0x40 - 8); // TODO: shouldn't it be (44 - 8) = 36?
         wavDataWriter->writeDword(0x45564157);
         wavDataWriter->writeDword(0x20746D66);
         wavDataWriter->writeDword(0x10);

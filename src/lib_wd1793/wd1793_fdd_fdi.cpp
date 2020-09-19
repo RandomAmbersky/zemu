@@ -8,7 +8,7 @@
 
 int C_Fdd::read_fdi() {
     newdisk(snbuf[4], snbuf[6]);
-    strncpy(dsc, (char*)snbuf + WORD2(snbuf[8], snbuf[9]), sizeof(dsc));
+    strncpy(dsc, (char*)snbuf + WORD2(snbuf[8], snbuf[9]), sizeof(dsc) - 1);
 
     int res = 1;
     uint8_t* trk = snbuf + 0x0E + WORD2(snbuf[0x0C], snbuf[0x0D]);

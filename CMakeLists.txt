@@ -30,8 +30,6 @@ elseif (NOT CMAKE_BUILD_TYPE)
     set (CMAKE_BUILD_TYPE Release)
 endif ()
 
-    set (CMAKE_EXPORT_COMPILE_COMMANDS On)
-
 if (NOT USE_DEFAULT_FIND_FRAMEWORK)
     # Fix to be able to compile on macOS Mojave
     set (CMAKE_FIND_FRAMEWORK LAST)
@@ -39,6 +37,11 @@ endif ()
 
 set (CMAKE_CXX_STANDARD 14)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter")
+
+if (UNIX AND (NOT APPLE) AND CMAKE_COMPILER_IS_GNUCC)
+    # For Boost.Process
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+endif ()
 
 set (ZEMU_VERSION_MAJOR 1)
 set (ZEMU_VERSION_MINOR 0)

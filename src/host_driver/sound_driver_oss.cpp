@@ -55,7 +55,7 @@ void SoundDriverOss::ioctlApply(unsigned long request, int value, const char* er
 }
 
 void SoundDriverOss::render(uint32_t* buffer, int samples) {
-    write(audioDescriptor, (uint8_t*)buffer, samples * sizeof(uint32_t));
+    [[maybe_unused]] auto unused = write(audioDescriptor, (uint8_t*)buffer, samples * sizeof(uint32_t));
 }
 
 #endif
